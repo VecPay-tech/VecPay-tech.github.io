@@ -1,4 +1,4 @@
-<\!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,244 +9,72 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
     <style>
-      :root {
-        --bg: #f4f8f6;
-        --ink: #0f2a22;
-        --muted: #3d5d53;
-        --brand: #0a9a6f;
-        --brand-deep: #056347;
-        --card: #ffffff;
-        --line: #cfe5dc;
-        --accent: #ffc24b;
-      }
-
+      :root { --bg:#f4f8f6; --ink:#0f2a22; --muted:#3d5d53; --brand:#0a9a6f; --line:#cfe5dc; --card:#fff; --accent:#ffc24b; }
       * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        font-family: 'Space Grotesk', sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 15% 10%, #dff6ec 0%, transparent 40%),
-          radial-gradient(circle at 85% 5%, #d2efe3 0%, transparent 35%),
-          linear-gradient(180deg, #f8fcfa 0%, var(--bg) 60%, #eef7f3 100%);
-      }
-
-      .wrap {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 32px 20px 72px;
-      }
-
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-      }
-
-      .chip {
-        border: 1px solid var(--line);
-        background: #fff;
-        border-radius: 999px;
-        padding: 8px 14px;
-        font-size: 13px;
-      }
-
-      .hero {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 28px;
-        margin-top: 34px;
-      }
-
-      .hero-main {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        padding: 34px;
-        box-shadow: 0 18px 50px rgba(7, 59, 42, 0.08);
-      }
-
-      h1 {
-        margin: 0;
-        font-size: clamp(34px, 6vw, 62px);
-        line-height: 1.02;
-      }
-
-      .lead {
-        margin-top: 18px;
-        color: var(--muted);
-        font-size: 18px;
-        line-height: 1.5;
-      }
-
-      .cta {
-        margin-top: 28px;
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        text-decoration: none;
-        border-radius: 12px;
-        padding: 12px 18px;
-        font-weight: 600;
-        transition: transform .2s ease, box-shadow .2s ease;
-      }
-
-      .btn-primary {
-        background: var(--brand);
-        color: #fff;
-        box-shadow: 0 10px 24px rgba(10, 154, 111, 0.25);
-      }
-
-      .btn-secondary {
-        border: 1px solid var(--line);
-        color: var(--ink);
-        background: #fff;
-      }
-
-      .btn:hover { transform: translateY(-2px); }
-
-      .hero-side {
-        display: grid;
-        gap: 14px;
-      }
-
-      .panel {
-        background: #ffffff;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 18px;
-      }
-
-      .panel h3 {
-        margin: 0 0 8px;
-        font-size: 18px;
-      }
-
-      .panel p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.45;
-      }
-
-      .grid {
-        margin-top: 28px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .card {
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 16px;
-      }
-
-      .card .tag {
-        display: inline-block;
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 12px;
-        color: var(--brand-deep);
-        background: #e5f8f0;
-        border-radius: 999px;
-        padding: 4px 8px;
-      }
-
-      .card h4 {
-        margin: 10px 0 6px;
-        font-size: 18px;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.45;
-      }
-
-      .foot {
-        margin-top: 26px;
-        padding-top: 18px;
-        border-top: 1px dashed var(--line);
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .highlight { color: var(--brand-deep); }
-      .dot { color: var(--accent); }
-
-      @media (max-width: 880px) {
-        .hero { grid-template-columns: 1fr; }
-        .grid { grid-template-columns: 1fr; }
-      }
+      body { margin:0; font-family:'Space Grotesk',sans-serif; color:var(--ink); background:radial-gradient(circle at 15% 10%, #dff6ec 0%, transparent 40%), radial-gradient(circle at 85% 5%, #d2efe3 0%, transparent 35%), linear-gradient(180deg,#f8fcfa 0%,var(--bg) 60%,#eef7f3 100%); }
+      .wrap { max-width:1080px; margin:0 auto; padding:32px 20px 72px; }
+      .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+      .logo-wrap { display:flex; align-items:center; gap:12px; }
+      .logo-img { width:38px; height:38px; object-fit:contain; border-radius:8px; }
+      .logo-text { font-family:'IBM Plex Mono',monospace; font-weight:600; letter-spacing:.04em; }
+      .chip { border:1px solid var(--line); background:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
+      .hero { display:grid; grid-template-columns:1.2fr 1fr; gap:28px; margin-top:34px; }
+      .hero-main,.panel,.card { background:var(--card); border:1px solid var(--line); }
+      .hero-main { border-radius:24px; padding:34px; box-shadow:0 18px 50px rgba(7,59,42,.08); }
+      h1 { margin:0; font-size:clamp(34px,6vw,62px); line-height:1.02; }
+      .lead { margin-top:18px; color:var(--muted); font-size:18px; line-height:1.5; }
+      .cta { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+      .btn { text-decoration:none; border-radius:12px; padding:12px 18px; font-weight:600; transition:transform .2s ease; }
+      .btn-primary { background:var(--brand); color:#fff; }
+      .btn-secondary { border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .btn:hover { transform:translateY(-2px); }
+      .hero-side { display:grid; gap:14px; }
+      .panel { border-radius:18px; padding:18px; }
+      .panel h3 { margin:0 0 8px; font-size:18px; }
+      .panel p { margin:0; color:var(--muted); line-height:1.45; }
+      .grid { margin-top:28px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+      .card { border-radius:16px; padding:16px; }
+      .tag { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#056347; background:#e5f8f0; border-radius:999px; padding:4px 8px; }
+      .card h4 { margin:10px 0 6px; font-size:18px; }
+      .card p { margin:0; color:var(--muted); line-height:1.45; }
+      .foot { margin-top:26px; padding-top:18px; border-top:1px dashed var(--line); color:var(--muted); font-size:14px; }
+      .dot { color:var(--accent); }
+      @media (max-width:880px){ .hero{grid-template-columns:1fr;} .grid{grid-template-columns:1fr;} .chip{display:none;} }
     </style>
   </head>
   <body>
     <div class="wrap">
       <div class="nav">
-        <div class="logo">VECPAY<span class="dot">.</span>TECH</div>
+        <div class="logo-wrap">
+          <img class="logo-img" src="assets/vecpay-tech-logo.png" alt="VecPay-tech logo" />
+          <div class="logo-text">VECPAY<span class="dot">.</span>TECH</div>
+        </div>
         <div class="chip">Payment infrastructure • Open source</div>
       </div>
 
       <section class="hero">
         <div class="hero-main">
-          <h1>Build modern payment products<span class="highlight"> faster</span>.</h1>
-          <p class="lead">
-            VecPay-tech builds developer-first payment infrastructure so teams can launch secure,
-            interoperable checkout, payout, and reconciliation experiences without legacy drag.
-          </p>
+          <h1>Build modern payment products faster.</h1>
+          <p class="lead">VecPay-tech builds developer-first payment infrastructure so teams can launch secure, interoperable checkout, payout, and reconciliation experiences without legacy drag.</p>
           <div class="cta">
             <a class="btn btn-primary" href="https://github.com/VecPay-tech">Explore repositories</a>
             <a class="btn btn-secondary" href="https://github.com/VecPay-tech/opencob">View OpenCob</a>
           </div>
         </div>
-
         <div class="hero-side">
-          <div class="panel">
-            <h3>Mission</h3>
-            <p>Accelerate adoption of modern payment technology through open, composable building blocks.</p>
-          </div>
-          <div class="panel">
-            <h3>Audience</h3>
-            <p>Developers, fintech teams, and enterprises modernizing payment stacks.</p>
-          </div>
-          <div class="panel">
-            <h3>Core Principle</h3>
-            <p>Secure-by-default systems with practical developer experience.</p>
-          </div>
+          <div class="panel"><h3>Mission</h3><p>Accelerate adoption of modern payment technology through open, composable building blocks.</p></div>
+          <div class="panel"><h3>Audience</h3><p>Developers, fintech teams, and enterprises modernizing payment stacks.</p></div>
+          <div class="panel"><h3>Principle</h3><p>Secure-by-default systems with practical developer experience.</p></div>
         </div>
       </section>
 
       <section class="grid">
-        <article class="card">
-          <span class="tag">01</span>
-          <h4>Orchestration</h4>
-          <p>Flexible routing and multi-rail processing foundations for scale.</p>
-        </article>
-        <article class="card">
-          <span class="tag">02</span>
-          <h4>Developer APIs</h4>
-          <p>API-first interfaces for checkout, payouts, reporting, and operations.</p>
-        </article>
-        <article class="card">
-          <span class="tag">03</span>
-          <h4>Reliability</h4>
-          <p>Operational visibility and resilient workflows for production-grade payments.</p>
-        </article>
+        <article class="card"><span class="tag">01</span><h4>Orchestration</h4><p>Flexible routing and multi-rail processing foundations for scale.</p></article>
+        <article class="card"><span class="tag">02</span><h4>Developer APIs</h4><p>API-first interfaces for checkout, payouts, reporting, and operations.</p></article>
+        <article class="card"><span class="tag">03</span><h4>Reliability</h4><p>Operational visibility and resilient workflows for production-grade payments.</p></article>
       </section>
 
-      <div class="foot">
-        VecPay-tech is building an open ecosystem for the next generation of payment products.
-      </div>
+      <div class="foot">VecPay-tech is building an open ecosystem for the next generation of payment products.</div>
     </div>
   </body>
 </html>
