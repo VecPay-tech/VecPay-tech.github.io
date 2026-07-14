@@ -3,48 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VecPay-tech | Open Payment Infrastructure</title>
-    <meta name="description" content="VecPay-tech is an open-source payment technology initiative building secure, interoperable, developer-first infrastructure for modern payment products." />
-    <meta name="theme-color" content="#0A7A5A" />
+    <title>VecPay-tech | Open Payment Technology</title>
+    <meta name="description" content="VecPay-tech builds open, enterprise-ready payment technology for developers and fintech teams." />
+    <meta name="theme-color" content="#0d1425" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #eef5f2;
-        --bg-deep: #d9ebe3;
-        --ink: #10261f;
-        --muted: #446258;
-        --brand: #0a7a5a;
-        --brand-2: #0e9c73;
-        --line: #c9ddd4;
-        --card: #ffffff;
-        --accent: #f5b84b;
+        --bg: #0b1020;
+        --bg-soft: #121a2e;
+        --surface: #171f36;
+        --surface-2: #1d2640;
+        --line: #2a3556;
+        --text: #e8edf8;
+        --muted: #9fb0d8;
+        --brand: #39a0ff;
+        --brand-2: #5ac8ff;
+        --accent: #27d3a2;
       }
 
       * { box-sizing: border-box; }
 
       body {
         margin: 0;
-        font-family: 'Manrope', sans-serif;
-        color: var(--ink);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: var(--text);
         background:
-          radial-gradient(circle at 10% 5%, #def3ea 0%, transparent 45%),
-          radial-gradient(circle at 90% 0%, #d6ece4 0%, transparent 38%),
-          linear-gradient(180deg, #f7fbf9 0%, var(--bg) 55%, var(--bg-deep) 100%);
+          radial-gradient(1200px 420px at 15% -5%, #1d2d57 0%, transparent 55%),
+          radial-gradient(900px 360px at 85% -10%, #123956 0%, transparent 48%),
+          linear-gradient(180deg, #0b1020 0%, #0d1325 60%, #0b1020 100%);
       }
 
       .shell {
         max-width: 1160px;
         margin: 0 auto;
-        padding: 28px 20px 80px;
+        padding: 30px 20px 76px;
       }
 
       .topbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
       }
 
       .brand {
@@ -54,126 +55,131 @@
       }
 
       .brand img {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         border-radius: 10px;
-      }
-
-      .brand .name {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 600;
-        letter-spacing: .03em;
-      }
-
-      .badge {
-        border: 1px solid var(--line);
+        border: 1px solid #2a3556;
         background: #fff;
-        padding: 8px 14px;
+      }
+
+      .brand-name {
+        font-family: 'IBM Plex Mono', monospace;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        color: #dfe8ff;
+      }
+
+      .status {
+        border: 1px solid var(--line);
+        background: rgba(23, 31, 54, 0.72);
+        color: #c7d5f5;
         border-radius: 999px;
-        font-size: 13px;
-        color: var(--muted);
+        padding: 8px 13px;
+        font-size: 12px;
       }
 
       .hero {
-        margin-top: 28px;
+        margin-top: 24px;
         display: grid;
-        grid-template-columns: 1.1fr .9fr;
-        gap: 20px;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 16px;
+      }
+
+      .hero-main,
+      .panel,
+      .section {
+        background: linear-gradient(180deg, rgba(24, 34, 59, 0.95), rgba(19, 27, 47, 0.95));
+        border: 1px solid var(--line);
+        border-radius: 18px;
       }
 
       .hero-main {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        padding: 34px;
-        box-shadow: 0 20px 48px rgba(16, 58, 44, .10);
+        padding: 32px;
+        box-shadow: 0 16px 44px rgba(3, 8, 20, 0.45);
       }
 
       h1 {
         margin: 0;
-        font-size: clamp(36px, 5.2vw, 64px);
+        font-size: clamp(34px, 5.2vw, 58px);
         line-height: 1.03;
         letter-spacing: -0.02em;
       }
 
       .subtitle {
-        margin-top: 16px;
+        margin-top: 14px;
         font-size: 18px;
-        line-height: 1.55;
         color: var(--muted);
-        max-width: 56ch;
+        line-height: 1.6;
+        max-width: 60ch;
       }
 
-      .hero-cta {
+      .cta {
         margin-top: 24px;
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 10px;
       }
 
       .btn {
         text-decoration: none;
-        padding: 12px 18px;
-        border-radius: 12px;
         font-weight: 700;
+        border-radius: 12px;
+        padding: 11px 17px;
         transition: transform .2s ease, box-shadow .2s ease;
       }
 
       .btn-primary {
-        color: #fff;
+        color: #031224;
         background: linear-gradient(135deg, var(--brand), var(--brand-2));
-        box-shadow: 0 12px 28px rgba(10, 122, 90, .3);
+        box-shadow: 0 10px 26px rgba(59, 160, 255, 0.35);
       }
 
       .btn-ghost {
-        color: var(--ink);
-        background: #fff;
-        border: 1px solid var(--line);
+        color: #dfe8ff;
+        border: 1px solid #365084;
+        background: rgba(17, 29, 54, 0.8);
       }
 
       .btn:hover { transform: translateY(-2px); }
 
-      .kpis {
-        margin-top: 18px;
+      .metrics {
+        margin-top: 20px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .metric {
+        border: 1px solid #2a3d67;
+        border-radius: 12px;
+        padding: 11px;
+        background: rgba(17, 28, 50, 0.72);
+      }
+
+      .metric .value {
+        font-weight: 800;
+        font-size: 20px;
+        color: #f3f6ff;
+      }
+
+      .metric .label {
+        margin-top: 3px;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #96abd8;
+      }
+
+      .side {
+        display: grid;
         gap: 10px;
       }
 
-      .kpi {
-        background: #f9fdfb;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 12px;
-      }
-
-      .kpi .v {
-        font-size: 24px;
-        font-weight: 800;
-      }
-
-      .kpi .l {
-        font-size: 12px;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: .05em;
-      }
-
-      .hero-side {
-        display: grid;
-        gap: 12px;
-      }
-
-      .panel {
-        background: #ffffff;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 16px;
-      }
+      .panel { padding: 15px; }
 
       .panel h3 {
-        margin: 0 0 8px;
-        font-size: 18px;
+        margin: 0 0 7px;
+        font-size: 17px;
       }
 
       .panel p {
@@ -183,43 +189,40 @@
       }
 
       .section {
-        margin-top: 18px;
-        background: #ffffff;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 18px;
+        margin-top: 14px;
+        padding: 16px;
       }
 
       .section h2 {
-        margin: 0 0 12px;
+        margin: 0 0 11px;
         font-size: 22px;
       }
 
-      .grid {
+      .cards {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
+        gap: 10px;
       }
 
       .card {
-        border: 1px solid var(--line);
-        border-radius: 14px;
+        border: 1px solid #2a3a61;
+        border-radius: 12px;
         padding: 14px;
-        background: #fbfefc;
+        background: rgba(15, 24, 44, 0.75);
       }
 
-      .card .id {
+      .pill {
         display: inline-block;
-        padding: 4px 8px;
         font-family: 'IBM Plex Mono', monospace;
-        font-size: 12px;
+        font-size: 11px;
         border-radius: 999px;
-        background: #e7f7f1;
-        color: #0c6a4f;
+        padding: 4px 8px;
+        color: #001a35;
+        background: linear-gradient(135deg, #7fd8ff, #5fb8ff);
       }
 
       .card h4 {
-        margin: 10px 0 6px;
+        margin: 9px 0 6px;
         font-size: 18px;
       }
 
@@ -230,14 +233,14 @@
       }
 
       .roadmap {
-        margin-top: 12px;
-        border-top: 1px dashed var(--line);
+        margin-top: 13px;
+        border-top: 1px dashed #304268;
         padding-top: 12px;
         display: grid;
         gap: 8px;
       }
 
-      .roadmap .item {
+      .road {
         display: flex;
         gap: 10px;
         align-items: flex-start;
@@ -246,24 +249,31 @@
       .dot {
         width: 9px;
         height: 9px;
-        border-radius: 50%;
         margin-top: 7px;
+        border-radius: 999px;
         background: var(--accent);
-        flex-shrink: 0;
+        box-shadow: 0 0 0 6px rgba(39, 211, 162, 0.12);
       }
 
-      .footer {
-        margin-top: 18px;
+      .road div {
         color: var(--muted);
-        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .road strong { color: #dfe8ff; }
+
+      .footer {
+        margin-top: 16px;
         text-align: center;
+        color: #90a4cf;
+        font-size: 13px;
       }
 
       @media (max-width: 980px) {
         .hero { grid-template-columns: 1fr; }
-        .grid { grid-template-columns: 1fr; }
-        .kpis { grid-template-columns: 1fr; }
-        .badge { display: none; }
+        .cards { grid-template-columns: 1fr; }
+        .metrics { grid-template-columns: 1fr; }
+        .status { display: none; }
       }
     </style>
   </head>
@@ -272,52 +282,52 @@
       <div class="topbar">
         <div class="brand">
           <img src="assets/vecpay-tech-logo.png" alt="VecPay-tech logo" />
-          <div class="name">VECPAY.TECH</div>
+          <div class="brand-name">VECPAY.TECH</div>
         </div>
-        <div class="badge">Open source payment infrastructure for builders</div>
+        <div class="status">Enterprise-grade • Open source • PayTech</div>
       </div>
 
       <section class="hero">
         <div class="hero-main">
-          <h1>Industrial-grade payment infrastructure, built in the open.</h1>
+          <h1>Open payment technology for serious builders.</h1>
           <p class="subtitle">
-            VecPay-tech empowers developers and fintech teams to launch modern payment products with secure-by-default architecture,
-            API-first building blocks, and interoperable rails across checkout, payouts, and reconciliation.
+            VecPay-tech is creating a modern payment stack that helps developers and fintech teams deliver secure,
+            interoperable products across checkout, payouts, and payment operations.
           </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="https://github.com/VecPay-tech">Explore Organization</a>
-            <a class="btn btn-ghost" href="https://github.com/VecPay-tech/opencob">OpenCob Repository</a>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://github.com/VecPay-tech">Explore Org</a>
+            <a class="btn btn-ghost" href="https://github.com/VecPay-tech/opencob">View OpenCob</a>
           </div>
-          <div class="kpis">
-            <div class="kpi"><div class="v">API-First</div><div class="l">Integration Model</div></div>
-            <div class="kpi"><div class="v">Secure-by-Default</div><div class="l">Operating Principle</div></div>
-            <div class="kpi"><div class="v">Open Source</div><div class="l">Delivery Standard</div></div>
+          <div class="metrics">
+            <div class="metric"><div class="value">API-First</div><div class="label">Integration</div></div>
+            <div class="metric"><div class="value">Security</div><div class="label">By Default</div></div>
+            <div class="metric"><div class="value">Interoperable</div><div class="label">Architecture</div></div>
           </div>
         </div>
 
-        <div class="hero-side">
-          <div class="panel"><h3>Mission</h3><p>Accelerate adoption of next-generation payment technology through composable, production-ready infrastructure.</p></div>
-          <div class="panel"><h3>Who We Serve</h3><p>Developers, fintech builders, and enterprises modernizing legacy payment systems.</p></div>
-          <div class="panel"><h3>Engineering Focus</h3><p>Reliability, observability, compliance readiness, and excellent developer experience.</p></div>
+        <div class="side">
+          <div class="panel"><h3>Mission</h3><p>Accelerate payment innovation with open, composable infrastructure.</p></div>
+          <div class="panel"><h3>Who We Support</h3><p>Developers, fintech teams, and enterprises modernizing payment systems.</p></div>
+          <div class="panel"><h3>Engineering Priority</h3><p>Reliability, observability, compliance readiness, and strong developer ergonomics.</p></div>
         </div>
       </section>
 
       <section class="section">
         <h2>Core Capability Areas</h2>
-        <div class="grid">
-          <article class="card"><span class="id">01</span><h4>Orchestration Layer</h4><p>Route transactions intelligently across payment rails and providers.</p></article>
-          <article class="card"><span class="id">02</span><h4>Checkout & Payout APIs</h4><p>Unified interfaces for collection, disbursement, and transaction lifecycle events.</p></article>
-          <article class="card"><span class="id">03</span><h4>Reconciliation & Ops</h4><p>Clear operational telemetry and finance-grade reconciliation workflows.</p></article>
+        <div class="cards">
+          <article class="card"><span class="pill">01</span><h4>Orchestration</h4><p>Intelligent routing across rails and providers for resilient transaction flows.</p></article>
+          <article class="card"><span class="pill">02</span><h4>Checkout & Payout APIs</h4><p>Unified API surfaces for collection, disbursement, and lifecycle events.</p></article>
+          <article class="card"><span class="pill">03</span><h4>Reconciliation & Ops</h4><p>Finance-grade controls, transparency, and operational insight.</p></article>
         </div>
 
         <div class="roadmap">
-          <div class="item"><span class="dot"></span><div><strong>Short term:</strong> strengthen open source foundations, docs, and reference integrations.</div></div>
-          <div class="item"><span class="dot"></span><div><strong>Mid term:</strong> launch modular components for orchestration and payment operations.</div></div>
-          <div class="item"><span class="dot"></span><div><strong>Long term:</strong> establish a trusted ecosystem for interoperable payment innovation.</div></div>
+          <div class="road"><span class="dot"></span><div><strong>Now:</strong> open foundations, docs, and reusable components.</div></div>
+          <div class="road"><span class="dot"></span><div><strong>Next:</strong> modular orchestration and operational tooling for production teams.</div></div>
+          <div class="road"><span class="dot"></span><div><strong>Later:</strong> ecosystem standards for interoperable payment innovation.</div></div>
         </div>
       </section>
 
-      <div class="footer">VecPay-tech • Building the open payment stack for the next decade.</div>
+      <div class="footer">VecPay-tech • Building payment infrastructure for the next generation.</div>
     </div>
   </body>
 </html>
