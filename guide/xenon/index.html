@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xenon Guide | VecPay-tech</title>
+    <meta name="description" content="Xenon is a BIAN v14-aligned banking orchestration platform: event-driven microservices, multi-engine workflow orchestration, and a unified operations portal. A user guide from VecPay-tech." />
+    <meta name="theme-color" content="#0d1425" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #121a2e;
+        --surface: #171f36;
+        --surface-2: #1d2640;
+        --line: #2a3556;
+        --text: #e8edf8;
+        --muted: #9fb0d8;
+        --brand: #39a0ff;
+        --brand-2: #5ac8ff;
+        --accent: #27d3a2;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(1200px 420px at 15% -5%, #1d2d57 0%, transparent 55%),
+          radial-gradient(900px 360px at 85% -10%, #123956 0%, transparent 48%),
+          linear-gradient(180deg, #0b1020 0%, #0d1325 60%, #0b1020 100%);
+      }
+
+      a { color: inherit; }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 24px;
+        background: rgba(11, 16, 32, 0.86);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        border: 1px solid #2a3556;
+        background: #fff;
+      }
+
+      .brand-name {
+        font-family: 'IBM Plex Mono', monospace;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        color: #dfe8ff;
+        font-size: 13px;
+      }
+
+      .crumb {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .crumb a:hover { color: var(--brand-2); }
+
+      .topbar-links {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .btn {
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 10px;
+        padding: 8px 14px;
+        font-size: 13px;
+        transition: transform .2s ease, box-shadow .2s ease;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        color: #031224;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: 0 10px 26px rgba(59, 160, 255, 0.3);
+      }
+
+      .btn-ghost {
+        color: #dfe8ff;
+        border: 1px solid #365084;
+        background: rgba(17, 29, 54, 0.8);
+      }
+
+      .btn:hover { transform: translateY(-1px); }
+
+      .layout {
+        max-width: 1220px;
+        margin: 0 auto;
+        padding: 32px 20px 90px;
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        gap: 30px;
+        align-items: start;
+      }
+
+      .toc {
+        position: sticky;
+        top: 76px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(23, 31, 54, 0.6);
+        padding: 16px;
+      }
+
+      .toc-title {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #7f92c4;
+        margin-bottom: 10px;
+      }
+
+      .toc a {
+        display: block;
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 13.5px;
+        padding: 6px 8px;
+        border-radius: 8px;
+        line-height: 1.4;
+      }
+
+      .toc a:hover { color: var(--text); background: rgba(57, 160, 255, 0.08); }
+
+      .hero {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 30px;
+        background: linear-gradient(180deg, rgba(24, 34, 59, 0.95), rgba(19, 27, 47, 0.95));
+        box-shadow: 0 16px 44px rgba(3, 8, 20, 0.45);
+        margin-bottom: 20px;
+      }
+
+      .kicker {
+        display: inline-block;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        border-radius: 999px;
+        padding: 5px 10px;
+        color: #001a35;
+        background: linear-gradient(135deg, #7fd8ff, #5fb8ff);
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(28px, 4vw, 40px);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.65;
+        max-width: 72ch;
+        margin: 0 0 18px;
+      }
+
+      .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+      section.doc {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(24, 34, 59, 0.85), rgba(19, 27, 47, 0.85));
+        padding: 26px 28px;
+        margin-bottom: 18px;
+        scroll-margin-top: 80px;
+      }
+
+      section.doc h2 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+
+      section.doc .sub {
+        color: var(--muted);
+        margin: 0 0 18px;
+        font-size: 14px;
+      }
+
+      section.doc p { color: #d3dcf4; line-height: 1.7; }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13.5px;
+        margin-top: 8px;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--line);
+        color: #d3dcf4;
+      }
+
+      th { color: #93a6d6; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+
+      code {
+        font-family: 'IBM Plex Mono', monospace;
+        background: rgba(9, 14, 28, 0.7);
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 2px 6px;
+        font-size: 12.5px;
+        color: #a9d4ff;
+      }
+
+      pre {
+        background: #0a0f1e;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      pre code { background: none; border: none; padding: 0; color: #cfe3ff; }
+
+      .shots {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      figure {
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+        background: #0a0f1e;
+      }
+
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      figcaption {
+        padding: 10px 12px;
+        font-size: 12.5px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+      }
+
+      .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+      .pill {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        border: 1px solid #2a3d67;
+        border-radius: 999px;
+        padding: 5px 10px;
+        color: #bcd3ff;
+        background: rgba(17, 28, 50, 0.72);
+      }
+
+      .footer {
+        text-align: center;
+        color: #90a4cf;
+        font-size: 13px;
+        padding: 24px 0 0;
+      }
+
+      @media (max-width: 900px) {
+        .layout { grid-template-columns: 1fr; }
+        .toc { position: static; }
+        .grid-2, .shots { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/vecpay-tech-logo.png" alt="VecPay-tech logo" />
+        <span class="brand-name">VECPAY.TECH</span>
+      </a>
+      <div class="crumb"><a href="../../index.html">Projects</a> / Xenon / Guide</div>
+      <div class="topbar-links">
+        <a class="btn btn-ghost" href="https://github.com/VecPay-tech/xenon">GitHub</a>
+        <a class="btn btn-primary" href="#getting-started">Get Started</a>
+      </div>
+    </div>
+
+    <div class="layout">
+      <nav class="toc">
+        <div class="toc-title">On this page</div>
+        <a href="#overview">Overview</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#governance">Governance &amp; Rule Authoring</a>
+        <a href="#getting-started">Getting Started</a>
+        <a href="#repo-structure">Repository Structure</a>
+        <a href="#roadmap">Status &amp; Roadmap</a>
+      </nav>
+
+      <main>
+        <div class="hero">
+          <span class="kicker">Open Source • BIAN v14 • Apache-2.0</span>
+          <h1>Xenon — BIAN-aligned banking orchestration platform</h1>
+          <p class="lead">
+            Xenon is VecPay-tech's reference implementation of a BIAN v14-aligned banking
+            orchestration platform: event-driven microservices, multi-engine workflow
+            orchestration (Temporal + Flowable), an externalized Decision Service (Flowable DMN),
+            and a unified, role-based operations portal built as a React micro-frontend.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="https://github.com/VecPay-tech/xenon">View on GitHub</a>
+            <a class="btn btn-ghost" href="#screenshots">See Screenshots</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Java 21 / Spring Boot 4</span>
+            <span class="pill">React 18 + Vite Module Federation</span>
+            <span class="pill">Temporal</span>
+            <span class="pill">Flowable BPMN/DMN</span>
+            <span class="pill">Kafka Outbox</span>
+            <span class="pill">258 BIAN domains, 35 graduated</span>
+          </div>
+        </div>
+
+        <section class="doc" id="overview">
+          <h2>Overview</h2>
+          <p class="sub">What Xenon is and why it exists</p>
+          <p>
+            Xenon combines governance documentation, a runnable backend platform, and a unified
+            operations portal in a single repository. It is designed as a demonstrable,
+            contract-first reference architecture for banks and fintechs building on the
+            <a href="https://bian.org/" target="_blank" rel="noopener">BIAN</a> service landscape —
+            not a toy demo, but a platform with real transactional outbox event publication,
+            maker-checker approval workflows, JWT-based OAuth2 security, and a full five-layer
+            test standard applied per domain service.
+          </p>
+          <p>
+            The platform currently runs locally on Docker/Podman Compose for development and
+            demos; production targets AWS EKS, MSK, and Aurora (see the project's Architecture
+            Decision Records for the full rationale).
+          </p>
+        </section>
+
+        <section class="doc" id="architecture">
+          <h2>Architecture</h2>
+          <p class="sub">Five runtime concerns, each with a distinct owner</p>
+          <table>
+            <thead>
+              <tr><th>Concern</th><th>Technology</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Distributed machine workflows and sagas</td><td>Temporal</td></tr>
+              <tr><td>Human approvals, exceptions, SLA tasks</td><td>Flowable BPMN/CMMN</td></tr>
+              <tr><td>Policy externalization (eligibility, routing, thresholds)</td><td>Decision Service (Flowable DMN)</td></tr>
+              <tr><td>Event streaming and CEP analytics</td><td>Kafka + Flink (Phase 2)</td></tr>
+              <tr><td>Unified operations portal (role-based, multi-domain UI)</td><td>React 18 + Vite Module Federation</td></tr>
+            </tbody>
+          </table>
+          <p>
+            Domain services are BIAN-aligned, contract-first microservices — OpenAPI and AsyncAPI
+            are the source of truth for interfaces. Every state-changing write goes through a
+            transactional outbox (never a direct Kafka publish inside a transaction), and every
+            domain service must satisfy a five-layer test standard: controller unit tests,
+            service integration tests, outbox relay tests, and consumer/provider Pact contract
+            tests.
+          </p>
+        </section>
+
+        <section class="doc" id="screenshots">
+          <h2>Screenshots</h2>
+          <p class="sub">The unified operations portal, captured from a running local instance</p>
+          <div class="shots">
+            <figure>
+              <img src="../../assets/xenon/03-decision-rules-list.png" alt="Decision Rules list page showing deployed DMN and BPMN artifacts" loading="lazy" />
+              <figcaption>Decision Rules — DMN decision tables and BPMN process models a domain evaluates against, each versioned and independently publishable.</figcaption>
+            </figure>
+            <figure>
+              <img src="../../assets/xenon/04-dmn-editor.png" alt="DMN decision table editor showing a loan pre-qualification rule" loading="lazy" />
+              <figcaption>DMN rule editor — visual decision-table authoring for policy rules (e.g. credit pre-qualification), gated by a maker-checker approval workflow.</figcaption>
+            </figure>
+            <figure>
+              <img src="../../assets/xenon/05-bpmn-editor.png" alt="BPMN process editor showing a customer onboarding workflow" loading="lazy" />
+              <figcaption>BPMN process viewer — human-task workflows such as customer onboarding, modeled and versioned alongside the DMN rules they invoke.</figcaption>
+            </figure>
+            <figure>
+              <img src="../../assets/xenon/02-decision-audit.png" alt="Decision audit trail listing evaluated decisions with outcome and risk band" loading="lazy" />
+              <figcaption>Decision audit — every DMN evaluation is logged with outcome, risk band, matched rule IDs, and latency for full explainability.</figcaption>
+            </figure>
+            <figure>
+              <img src="../../assets/xenon/06-corporate-loans-en.png" alt="Corporate Loan domain list page in English" loading="lazy" />
+              <figcaption>Corporate Loan domain workspace — one of 35 graduated BIAN domain services, each with its own list/detail/approval-queue pages.</figcaption>
+            </figure>
+            <figure>
+              <img src="../../assets/xenon/07-corporate-loans-zh.png" alt="Same Corporate Loan domain list page switched to Traditional Chinese" loading="lazy" />
+              <figcaption>Built-in i18n — English, Traditional Chinese, and Japanese are supported platform-wide, switchable without a page reload.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="doc" id="governance">
+          <h2>Governance &amp; Rule Authoring</h2>
+          <p class="sub">Maker-checker controls for policy rule changes</p>
+          <p>
+            Business rules (DMN decision tables) and process models (BPMN diagrams) are authored
+            directly in the portal by operations users, then routed through a compliance
+            approval queue before publication. Every draft carries a compatibility report and a
+            test report generated against the rule's existing test cases, and every
+            approve/reject action requires a recorded rationale — satisfying the platform's
+            100%-audit-coverage requirement for privileged, financial state-changing actions.
+          </p>
+        </section>
+
+        <section class="doc" id="getting-started">
+          <h2>Getting Started</h2>
+          <p class="sub">Run the full stack locally with Docker Compose</p>
+          <pre><code>git clone https://github.com/VecPay-tech/xenon.git
+cd xenon
+
+# Backend platform (Java 21 / Maven monorepo)
+cd platform
+mvn clean install -DskipTests          # ~20s, 28+ modules
+
+# Full stack (Postgres, Kafka, Keycloak, Temporal, gateway, domain services)
+cd ..
+docker compose --profile platform up -d
+
+# Unified operations portal (React micro-frontend, pnpm workspace)
+cd portal
+pnpm install
+pnpm --filter shell dev                # http://localhost:3010</code></pre>
+          <p>
+            See the repository's <code>README.md</code> and <code>CLAUDE.md</code> for the full
+            developer onboarding runbook, domain graduation checklist, and non-functional release
+            gates.
+          </p>
+        </section>
+
+        <section class="doc" id="repo-structure">
+          <h2>Repository Structure</h2>
+          <p class="sub">A single repo for governance docs, backend, and portal</p>
+          <table>
+            <thead><tr><th>Directory</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr><td><code>docs/</code></td><td>Normative standards, contracts, schemas, ADRs, governance artifacts</td></tr>
+              <tr><td><code>platform/</code></td><td>Maven monorepo implementing all domain services (Java 21, Spring Boot 4)</td></tr>
+              <tr><td><code>portal/</code></td><td>pnpm workspace implementing the Unified Operations Portal (React 18, Vite Module Federation)</td></tr>
+              <tr><td><code>bian/</code></td><td>The BIAN v14 service landscape reference used to derive domain contracts</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="doc" id="roadmap">
+          <h2>Status &amp; Roadmap</h2>
+          <p class="sub">Where the platform stands today</p>
+          <p>
+            35 of 258 catalogued BIAN domains are fully graduated (real entities, migrations,
+            outbox-backed writes, gateway routes, and full five-layer test coverage), including
+            Payment Execution, Customer Profile, Decision Service, Beneficiary Management,
+            Current Account, and Corporate Loan. The remainder are scaffolded and boot with
+            health checks only, ready to be graduated using the platform's mechanical graduation
+            pipeline.
+          </p>
+          <p>
+            Deferred to later phases: a shared demo environment on Oracle OCI, AWS EKS/MSK/Aurora
+            production deployment, and Apache Flink-based complex event processing.
+          </p>
+        </section>
+
+        <div class="footer">
+          Xenon is developed by <a href="../../index.html" style="color:var(--brand-2)">VecPay-tech</a> under the Apache License 2.0.
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
